@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <link rel="stylesheet" href="index.css">
+        
+        
+    </head>
+    <title>Index</title>
+    <body>
+        <main>
+            <h1>Formulario</h1>
+            <div>
+                <img src="xd3.jpg">
+            </div>
+            <p>Responde el siguiente formulario.</p>
+
+            <div>          
+                
+                
+                    <div class="formulario">
+                        <p>Nombre(s)</p>
+                        <input  name="Nombre" id="nom">
+
+                        <p>Apellidos</p>
+                        <input name="Apellidos" id="ape">
+
+                        <p>Edad</p>
+                        <input name="Edad" id="edad">
+
+                        <div>
+                            <form>
+                                <p>Correo</p>
+                                <input type="text" name="correo" id="email">
+                                <script src="funciones.js"></script>
+                                <input type="button" onclick="validar(form.correo.value)" value="Validar"/>
+                            </form>
+                        </div>
+                        
+                        <p>Contraseña</p>
+                        <input type="password" name="cont">
+
+                        <form>
+                            <button type="button" onclick="location.href='otro.html'">Terminar</button>
+                        </form>
+                    </div>
+              
+                    
+            </div>
+            
+            </button>
+        </main>  
+    </body>
+</html>
