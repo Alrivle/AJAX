@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/10/2020, 12:39:52 PM
+    Author     : darka
+*/
+
+body{
+    background: beige;
+}
+
+.divchido{
+    background: greenyellow;
+    padding: 20px 20px 20px 20px;
+    border-radius: 25px;
+    width: 500px;
+}

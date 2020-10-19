@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/fecha.css">
+    </head>
+    <body>
+        <h1>Práctica 3 JSP Y Servlets</h1>
+        
+        <div class="divchido">
+            <button type="button" onclick="location.href='Fecha.jsp'">Esto te lleva aL JSP</button>
+            
+            <div>
+                <form  action="/Practica3/Controlador" method="post">
+                    <h2>Método post</h2>
+                    <p>Nombre</p>
+                    <input type="text" name="nombreP" id="nombrePost">
+                    <p>Correo</p>
+                    <input type="text" name="correoP" id="correoPost">
+                    <input type="submit" value="post xd">
+                </form>
+                <form action="/Practica3/Controlador" method="get">
+                    <h2>Método get</h2>
+                    <p>Nombre</p>
+                    <input type="text" name="nombreG" id="nombreGet">
+                    <p>Correo</p>
+                    <input type="text" name="correoG" id="correoGet">
+                    <input type="submit" value="get xd">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
