@@ -1,0 +1,3 @@
+<h1>Imagen 2</h1>
+<p>xd</p>
+<img src="media/xd23.jpg" >

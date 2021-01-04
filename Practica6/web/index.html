@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>Practica4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/index.css">
+        <script type="text/javascript" language = "javascript">
+            var xhr;
+            
+            function buscarcomentario() {
+                if ( window.ActiveXObject ) 
+                    xhr = new ActiveXObject( "Microsoft.XMLHttp" );      
+                else 
+                    if ( ( window.XMLHttpRequest ) || ( typeof XMLHttpRequest ) != undefined )
+                    xhr = new XMLHttpRequest();               
+                else {
+                    alert( "El navegador no tiene soporte para AJAX." );
+                    close( "index.html" );
+                }
+            }
+            
+            
+        </script>
+    </head>
+    <body onload="buscarcomentario();">
+        <div>
+            <h1>Práctica 6</h1>
+        </div>
+        <div class="body2">
+            <form action="Controlador" method="Post">
+                Usuario:
+                <input type="text" id="usuario" name="usuario">
+                Contraseña:
+                <input type="password" id="cont" name="cont">
+                <input type="submit" value="entrar" class="submit">
+            </form>
+        </div>        
+    </body>
+</html>

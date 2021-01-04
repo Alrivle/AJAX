@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/index.css">
+        <script type="text/javascript" language = "javascript">
+            var xhr;
+            
+            function buscarcomentario() {
+                if ( window.ActiveXObject ) 
+                    xhr = new ActiveXObject( "Microsoft.XMLHttp" );      
+                else 
+                    if ( ( window.XMLHttpRequest ) || ( typeof XMLHttpRequest ) != undefined )
+                    xhr = new XMLHttpRequest();               
+                else {
+                    alert( "El navegador no tiene soporte para AJAX." );
+                    close( "index.html" );
+                }
+            }
+            
+            function txt(){
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("fun1").innerHTML = this.responseText;
+                    }
+                }
+                xhr.open("GET", "../archivos/archivo1.txt", true);
+                xhr.send();
+            }
+            
+            function imagen1(url, cfunction){
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        cfunction(this);
+                    }
+                }
+                xhr.open("GET", url, true);
+                xhr.send();
+            }
+            
+            function funcion(xhr) {
+                document.getElementById("fun2").innerHTML =
+                xhr.responseText;
+            }
+            
+            function myMove() {
+                var elem = document.getElementById("myAnimation");
+                var pos = 0;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    if (pos == 350) {
+                        clearInterval(id);
+                    } else {
+                        pos++;
+                        elem.style.top = pos + 'px';
+                        elem.style.left = pos + 'px';
+                    }
+                }
+            }
+            
+            function txtA(){
+                xhr = new XMLHttpRequest();
+                xhr.open("GET", "../archivos/archivo2.txt", false);
+                xhr.send();
+                document.getElementById("fun3").innerHTML = xhr.responseText;
+             
+            }
+        </script>
+    </head>
+    <body onload="buscarcomentario()">
+        
+        <div id="anim">
+            <p>
+                <button onclick="myMove()">Animate</button>
+            </p>
+            <div id ="myContainer">
+                <div id ="myAnimation"></div>
+            </div>
+        </div>
+        <div id="fun1">
+            <h2>Función con txt del servidor presiona el botón</h2>
+            <input type="submit" value="presioname" class="submit" onclick="txt();">
+        </div>
+        <div id="fun2">
+            <h2>Imágenes</h2>
+            <input type="submit" value="imagen 1" class="submit" onclick="imagen1('archivos/archivo3.txt',funcion);">
+            <input type="submit" value="imagen 2" class="submit" onclick="imagen1('archivos/archivo4.txt',funcion);">
+        </div>
+        <div id="fun3">
+            <h2>Función sincrona</h2>
+            <input type="submit" value="presioname" class="submit" onclick="txtA();">
+        </div>
+    </body>
+</html>
