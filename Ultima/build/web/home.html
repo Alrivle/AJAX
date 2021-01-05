@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/index.css">
+        <script type="text/javascript" language = "javascript">
+            var xhr;
+            
+            function buscarcomentario() {
+                if ( window.ActiveXObject ) 
+                    xhr = new ActiveXObject( "Microsoft.XMLHttp" );      
+                else 
+                    if ( ( window.XMLHttpRequest ) || ( typeof XMLHttpRequest ) != undefined )
+                    xhr = new XMLHttpRequest(); 
+                    
+                else {
+                    alert( "El navegador no tiene soporte para AJAX." );
+                    close( "home.html" );
+                }
+                loadFile();
+            }
+            
+            function loadFile(){
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        usuario(this);
+                    }           
+                };
+                xhr.open("GET", "archivos/usuarios.xml", true);
+                xhr.send();
+            }
+            
+            function usuario(xml){
+                var xmlDoc = xml.responseXML;
+                var x = xmlDoc.getElementsByTagName("usuario")[0];
+                var y = xmlDoc.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+                var z = xmlDoc.getElementsByTagName("nombre")[0].childNodes[0].nodeValue;
+                var txt = "<table><tr><td>"+ y +"</td><td>"+z+"</td></tr></table>"
+                document.getElementById("1").innerHTML = txt;
+            }
+            
+            function txt(){
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("fun1").innerHTML = this.responseText;
+                    }
+                };
+                xhr.open("GET", "archivos/archivo1.txt", true);
+                xhr.send();
+            }
+            
+            function imagen1(id){
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var img = "<img src="+xhr.responseText+" style=\"width:375px;height:600px;\">";
+                        document.getElementById("fun2").innerHTML = img;
+                    }
+                };
+                xhr.open("GET", "Imagen?id="+id, true);
+                xhr.send();
+            }
+        </script>
+    </head>
+    <body onload="buscarcomentario()"> 
+        <div id="1">
+        </div>
+        <div id="fun1">
+            <h2>Función con txt del servidor presiona el botón</h2>
+            <input type="submit" value="presioname" class="submit" onclick="txt();">
+        </div>
+        <div id="fun2">
+            <h2>Imágenes</h2>
+            <input type="submit" value="imagen 1" class="submit" onclick="imagen1('1');">
+        </div>
+    </body>
+</html>

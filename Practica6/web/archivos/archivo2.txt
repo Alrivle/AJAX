@@ -1,2 +1,0 @@
-<h1>La función sincrona:v</h1>
-<img src="media/img2.jpeg" >

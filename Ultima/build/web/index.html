@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>Practica6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/index.css">
+        <script type="text/javascript" language = "javascript">
+            var xhr;
+            
+            function buscarcomentario() {
+                if ( window.ActiveXObject ) 
+                    xhr = new ActiveXObject( "Microsoft.XMLHttp" );      
+                else 
+                    if ( ( window.XMLHttpRequest ) || ( typeof XMLHttpRequest ) != undefined )
+                    xhr = new XMLHttpRequest();               
+                else {
+                    alert( "El navegador no tiene soporte para AJAX." );
+                    close( "index.html" );
+                }
+            }
+            
+            function logIn() {
+                var usuario = document.getElementById('usuario').value;
+                var cont = document.getElementById('cont').value;                                    
+                xhr.onreadystatechange = function (){
+                    if (xhr.readyState == 4 && xhr.status == 200){
+                        var data = xhr.responseText;
+                        console.log(data);
+                        if(data == 1){
+                            window.location.href = "home.html";
+                        }else{
+                            alert("contraseña o usuario incorrecto");
+                        }
+                    }
+                }
+                xhr.open("GET","Controlador?usuario="+ usuario +"&cont="+ cont,true);
+              
+                xhr.send(null);
+            }
+            
+            
+            //action="Controlador" method="Post"
+        </script>
+    </head>
+    <body onload="buscarcomentario();">
+        <div>
+            <h1>Práctica 6</h1>
+        </div>
+        <div class="body2">
+            <form >
+                Usuario:
+                <input type="text" id="usuario" name="usuario">
+                Contraseña:
+                <input type="password" id="cont" name="cont">
+                <input type="submit" value="entrar" onclick="logIn();">
+            </form>
+        </div>        
+    </body>
+</html>
